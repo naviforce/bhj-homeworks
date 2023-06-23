@@ -3,7 +3,6 @@ const signinForm = document.getElementById('signin__form');
 
 const welcomeMessage = document.getElementById('welcome');
 const userId = document.getElementById('user_id');
-const signoutButton = document.getElementById('signout__btn');
 
 signinForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -54,15 +53,3 @@ signinForm.addEventListener('submit', e => {
     input.value = '';
   
 });
-
-signoutButton.addEventListener('click', () => {
-  delete localStorage.userId;
-  welcomeMessage.classList.remove('welcome_active'); 
-  signin.classList.add('signin_active');  
-});
-
-if (localStorage.userId !== undefined) {
-  userId.innerText = localStorage.userId;
-  welcomeMessage.classList.add('welcome_active');  
-} else
-  signin.classList.add('signin_active');   
