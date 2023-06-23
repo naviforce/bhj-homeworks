@@ -32,12 +32,13 @@ signinForm.addEventListener('submit', e => {
             return;
           }
         
-          
-          localStorage.userId = answer.user_id;
-          userId.innerText = localStorage.userId;
-          signin.classList.remove('signin_active');
-          welcomeMessage.classList.add('welcome_active');          
-          
+          localStorage.setItem('user_id', userId);
+            savedId = localStorage.getItem('user_id');
+            userId.textContent = savedId;
+            signin.classList.remove('signin_active');
+            welcome.classList.add('welcome_active');
+
+        
           break;
               
         default:
@@ -52,4 +53,13 @@ signinForm.addEventListener('submit', e => {
   for (const input of signinForm.querySelectorAll('input'))
     input.value = '';
   
+});
+
+window.addEventListener('load', () => {
+  savedId = localStorage.getItem('user_id');
+  if (savedId) {
+      userId.textContent = savedId;
+      signin.classList.remove('signin_active');
+      welcome.classList.add('welcome_active');
+  }
 });
